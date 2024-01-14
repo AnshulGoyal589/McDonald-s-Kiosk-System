@@ -9,7 +9,7 @@ const methodOverride = require("method-override");
 const bodyParser=require('body-parser'); 
 require('dotenv').config();
 const PORT= process.env.PORT || 8000;  
-const Product = require("./models/product");
+const Product = require("./models/Product");
 app.use(bodyParser.json());
 const stripe = require('stripe')(process.env.SECRET_KEY);
 app.post('/create-checkout-session', async (req, res) => {

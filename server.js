@@ -19,6 +19,7 @@ let category;
 let list=[];
 let toggle=false;
 let name;
+let order=256;
 
 console.log(process.env.MONGODB_URL);
 // mongoose.connect('mongodb://127.0.0.1:27017/kiosk')
@@ -109,7 +110,7 @@ app.get('/confirm',(req,res)=>{
     res.render('pages/confirm',{list,total,mode});
 });
 app.get('/cash',(req,res)=>{    
-    res.render('pages/cash');
+    res.render('pages/cash',{order});
 });
 app.post('/create-checkout-session', async (req, res) => {
     const session = await stripe.checkout.sessions.create({

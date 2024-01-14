@@ -1,0 +1,28 @@
+<% layout('layout/boilerplate') -%>
+
+<head>
+    <style>
+        #homeImg {
+            width: 100vw;
+            height: 100vh;
+        }
+        #order{
+            position: absolute;
+            top: 91%;
+            left: 31%;
+            width:660px ;
+            transform: translate(-50%, -50%);
+            font-size: 2em;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #ee9b00;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body style="background-image: url('../../public/images/home.jpeg'); background-size: cover; background-position: top; background-repeat: no-repeat;">
+
+    <button id="order" onclick="window.location.href='/mode'" > Make An Order </button>
+
+</body>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #mainImg {
+            width: 100vw;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        #hero {
+            display: flex;
+            margin-top: -5px;
+            min-height: 450px;
+        }
+
+        #sidebar {
+            width: 300px;
+            background-color: whitesmoke;
+            color: black;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        #productContainer {
+            flex: 1;
+            padding: 20px;
+            
+            overflow-y: auto;
+        }
+
+        .categoryButton {
+            margin-bottom: 10px;
+            font-size: 22px;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            background-color:#fca311;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .categoryButton:hover {
+            background-color: #777;
+        }
+        
+        .choiceImg{
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <img id="mainImg" src="../../public/images/mainImg.jpg" alt="">
+    
+    <div id="hero">
+        <div id="sidebar">
+            <div class="choiceContainer" onClick="window.location.href='/category?category=burgers'">
+                <img class="choiceImg" src="../../public/images/burgers.jpeg" alt="">
+                <button class="categoryButton"  >Burgers</button>
+            </div>
+            <div class="choiceContainer"  onClick="window.location.href='/category?category=fries'">
+                <img class="choiceImg" src="../../public/images/meals.jpeg" alt="">
+                <button class="categoryButton" >Fries & Sides</button>
+            </div>
+            <div class="choiceContainer" onClick="window.location.href='/category?category=beverages'" >
+                <img class="choiceImg" src="../../public/images/beverages.jpeg" alt="">
+                <button class="categoryButton">Beverages</button>
+            </div>
+            <div class="choiceContainer" onClick="window.location.href='/category?category=breakfast'">
+                <img class="choiceImg" src="../../public/images/breakfast.jpeg" alt="">
+                <button class="categoryButton"  >Breakfast</button>
+            </div>
+            <div class="choiceContainer" onClick="window.location.href='/category?category=happy'" >
+                <img class="choiceImg" src="../../public/images/meal.jpeg" alt="">
+                <button class="categoryButton" >Happy Meal</button>
+            </div>
+            <div class="choiceContainer"  onClick="window.location.href='/category?category=chicken'">
+                <img class="choiceImg" src="../../public/images/chicken.jpeg" alt="">
+                <button class="categoryButton" >Chicken & Fish Sandwiches</button>
+            </div>
+            <div class="choiceContainer" onClick="window.location.href='/category?category=coffee'">
+                <img class="choiceImg" src="../../public/images/coffee.jpeg" alt="">
+                <button class="categoryButton" >McCafe Coffees</button>
+            </div>
+            <div class="choiceContainer" onClick="window.location.href='/category?category=sweets'">
+                <img class="choiceImg" src="../../public/images/sweet.jpeg" alt="">
+                <button class="categoryButton" >Sweets & Treats</button>
+            </div>
+        </div>
+
+
+
+        <div id="productContainer">
+            <h2>Products</h2>
+            <h2>Choose a category</h2>
+        </div>
+    </div>
+</body>
+</html>

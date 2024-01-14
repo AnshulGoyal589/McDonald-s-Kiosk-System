@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #mainImg {
+            width: 100vw;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        #hero {
+            display: flex;
+            margin-top: -5px;
+            min-height: 450px;
+        }
+
+        #sidebar {
+            /* width: 860px; */
+            width: 21vw;
+            height: 494px;
+            background-color: whitesmoke;
+            color: black;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-y: scroll;
+        }
+
+        .choiceContainer {
+            border: 2px solid black;
+            margin: 20px;
+            cursor: pointer;
+            width: 200px;
+            height: 200px;
+        }
+
+        .choiceImg {
+            width: 100%;
+            height: 110px;
+            object-fit: cover;
+        }
+
+        .categoryButton {
+            font-size: 18px;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            background-color: #fca311;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .categoryButton:hover {
+            background-color: #777;
+        }
+
+        #productContainer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 55px;
+            padding-left: 120px;
+            height: 494px;
+            width: 82vw;
+            overflow-y: scroll;
+        }
+
+        .productCard {
+            width: 280px;
+            background-color: #fff;
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .productName {
+            font-size: 23px;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+
+        .productPrice {
+            font-size: 16px;
+            color: #888;
+        }
+
+        .productImage {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 2px solid black;
+            border-radius: 8px 8px 0 0;
+        }
+        #flash{
+            background-color: #a7c957;
+            position: absolute;
+            top: 625px;
+            left: 315px;
+            width: 1205px;
+            height: 70px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            
+        }
+        #flash button{
+            background-color:white;
+            border: none;
+            color:green ;
+            font-size: 26px;
+            padding: 10px;
+            cursor: pointer;
+            margin-left: 40px;
+            border-radius: 10px;
+        }
+        #done{
+            /* background-color: #a7c957; */
+            background-color: #fca311;
+            position: absolute;
+            top: 615px;
+            left: 315px;
+            width: 1205px;
+            height: 80px;
+            color: white;
+        }
+        .cartCard{
+            width: 65vw;
+            display: flex;
+            background-color: #fff;
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid black;
+            margin-top: 25px;
+        }
+        #cartContainer{
+            
+            display: flex;
+            flex-direction: column;
+            height: 450px;
+            width: 100%;
+            overflow-y: auto;
+        }
+        .cartImg{
+            height: 140px;
+            width: 140px;
+        }
+        .cartName{
+            font-size: 25px;
+            font-weight: 600;
+        }
+        .cartQuantity{
+            position: relative;
+            left: 360px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #cancel{
+            background-color:red;
+            margin-top: 12px;
+            width: 40%;
+            text-align: center;
+            margin-left: 85px;
+            color: white;
+            font-size: 30px;
+            border-radius: 20px;
+            padding: 5px 10px;
+        }
+        #confirm{
+            background-color:green;
+            margin-top: 12px;
+            width: 40%;
+            text-align: center;
+            margin-left: 85px;
+            color: white;
+            font-size: 30px;
+            border-radius: 20px;
+            padding: 5px 10px;
+        }
+    </style>
+    
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  
+
+</head>
+<body>
+    <img id="mainImg" src="../../public/images/mainImg.jpg" alt="">
+    
+    <div id="hero">
+        <div id="sidebar">
+            <div class="choiceContainer" onClick="window.location.href='/category?category=burgers'">
+                <img class="choiceImg" src="../../public/images/burgers.jpeg" alt="">
+                <button class="categoryButton"  >Burgers</button>
+            </div>
+            <div class="choiceContainer"  onClick="window.location.href='/category?category=fries'">
+                <img class="choiceImg" src="../../public/images/meals.jpeg" alt="">
+                <button class="categoryButton" >Fries & Sides</button>
+            </div>
+            <div class="choiceContainer" onClick="window.location.href='/category?category=beverages'" >
+                <img class="choiceImg" src="../../public/images/beverages.jpeg" alt="">
+                <button class="categoryButton">Beverages</button>
+            </div>
+            <div class="choiceContainer" onClick="window.location.href='/category?category=breakfast'">
+                <img class="choiceImg" src="../../public/images/breakfast.jpeg" alt="">
+                <button class="categoryButton"  >Breakfast</button>
+            </div>
+            <div class="choiceContainer" onClick="window.location.href='/category?category=happy'" >
+                <img class="choiceImg" src="../../public/images/meal.jpeg" alt="">
+                <button class="categoryButton" >Happy Meal</button>
+            </div>
+            <div class="choiceContainer"  onClick="window.location.href='/category?category=chicken'">
+                <img class="choiceImg" src="../../public/images/chicken.jpeg" alt="">
+                <button class="categoryButton" >Chicken & Fish Sandwiches</button>
+            </div>
+            <div class="choiceContainer" onClick="window.location.href='/category?category=coffee'">
+                <img class="choiceImg" src="../../public/images/coffee.jpeg" alt="">
+                <button class="categoryButton" >McCafe Coffees</button>
+            </div>
+            <div class="choiceContainer" onClick="window.location.href='/category?category=sweets'">
+                <img class="choiceImg" src="../../public/images/sweet.jpeg" alt="">
+                <button class="categoryButton" >Sweets & Treats</button>
+            </div>
+        </div>
+
+        <div id="productContainer">
+            <% if(!toggle){ %>
+            <div style="width: 80%; text-align: center; padding: 20px;font-size: 25px;">
+                <h1>CHOOSE A CATEGORY</h1>
+            </div>
+            <% products.forEach(product => { %>
+                <div class="productCard" onclick="window.location.href='/products?id=<%=product._id %>'" >
+                    <img class="productImage" src="<%= product.img %>" alt="">
+                    <div class="productName"><%= product.name %></div>
+                    <div class="productPrice">$<%= product.price %></div>
+                </div>
+                <% if ( list.length) { %>
+                    <div id="flash">
+                        <h3>Product Added Successfully!!</h3>
+                        <button onclick="window.location.href='/newProd'">View Cart</button>
+                    </div>
+                <% } %>
+            <% }) %>
+            <% }else{ %>
+                <div id="cartContainer" >
+                    <h1 style="width: 100%;position: relative;left: 260px;font-size: 35px;margin-top: 20px;" >Customize your Products</h1>
+                    <% list.forEach(item=>{ %>
+                        <div class="cartCard"  >
+                            <img class="cartImg"  src="<%= item.img %>" alt="">
+                            <div style="display:inline-block;display:flex;flex-direction: column;text-align: center;justify-content: center;margin-left: 13px;" >
+                                <div class="cartName" >Product <%= item.name %></div>
+                                <div class="cartPrice" >$<%= item.price %></div>
+                            </div>
+                            <div class="cartQuantity">
+                                <button style="background-color:white;border: none;color:red;height: 30px;width: 30px;font-size: 55px;display: flex;justify-content: center;padding-bottom: 30px;margin-bottom: 35px;margin-right: 10px;"  onclick="window.location.href='/updateD?id=<%=item._id%>'">-</button>
+                                <span style="padding: 10px;border: 1px solid black;margin: 5px;width: fit-content;height: fit-content;font-size:37px ;"><%= item.quantity  %></span> <!-- This will display the quantity -->
+                                <button  style="background-color:white;border: none;color:red;height: 30px;width: 30px;font-size: 55px;display: flex;justify-content: center;padding-bottom: 30px;margin-bottom: 35px;margin-left: 10px;"  onclick="window.location.href='/updateI?id=<%=item._id%>'">+</button>
+                                
+                            </div>
+                        </div>
+                    <% }) %>
+                    <div id="done">
+                        <button id="cancel" onclick="window.location.href='/'">Cancel Order</button>
+                        <button id="confirm" onclick="window.location.href='/confirm'">Done</button>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
+

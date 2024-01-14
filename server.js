@@ -12,27 +12,7 @@ const PORT= process.env.PORT || 8000;
 const Product = require("./models/Product");
 app.use(bodyParser.json());
 const stripe = require('stripe')(process.env.SECRET_KEY);
-app.post('/create-checkout-session', async (req, res) => {
-    const session = await stripe.checkout.sessions.create({
-      line_items: [
-        { 
-          price_data: {
-            currency: 'usd', 
-            product_data: {
-              name: 'Burger', 
-            },
-            unit_amount: 1000, 
-          }, 
-          quantity: 1,
-        },
-      ],
-      mode: 'payment',
-      success_url: `http://localhost:${PORT}/success`,
-      cancel_url: `http://localhost:${PORT}/cancel`,
-    });
-  
-    res.redirect(303, session.url); 
-  });
+
   
 let mode;
 let category;
@@ -40,6 +20,7 @@ let list=[];
 let toggle=false;
 let name;
 
+console.log(process.env.MONGODB_URL);
 // mongoose.connect('mongodb://127.0.0.1:27017/kiosk')
 mongoose.connect(process.env.MONGODB_URL,{ useNewUrlParser: true, useUnifiedTopology: true })
 .then(()=> console.log("db connected sucessfully".yellow)) 
@@ -130,8 +111,27 @@ app.get('/confirm',(req,res)=>{
 app.get('/cash',(req,res)=>{    
     res.render('pages/cash');
 });
-
-
+app.post('/create-checkout-session', async (req, res) => {
+    const session = await stripe.checkout.sessions.create({
+      line_items: [
+        { 
+          price_data: {
+            currency: 'usd', 
+            product_data: {
+              name: 'Burger', 
+            },
+            unit_amount: 1000, 
+          }, 
+          quantity: 1,
+        },
+      ],
+      mode: 'payment',
+      success_url: `http://localhost:${PORT}/success`,
+      cancel_url: `http://localhost:${PORT}/cancel`,
+    });
+  
+    res.redirect(303, session.url); 
+});
 
 
 

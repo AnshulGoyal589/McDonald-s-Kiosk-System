@@ -63,7 +63,7 @@ Explore the live demo of the McDonald's style kiosk website [here](https://mcdon
 
 4. **Run the Application:**
    ```bash
-   npm start
+   node server.js
    ```
 
 5. **Access the Website:**

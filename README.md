@@ -4,6 +4,10 @@
 
 This project aims to create a modern and user-friendly kiosk website inspired by the design and functionality seen in McDonald's outlets. The website incorporates various features such as cart management, product customization, debit/credit card integration, and payment options like cash on delivery or online payment. The technologies used include EJS template, Bootstrap, Stripe API, REST API, HTML, CSS, and JavaScript.
 
+## Live Demo
+
+Explore the live demo of the McDonald's style kiosk website [here](https://mcdonalds-kiosk-system.onrender.com/).
+
 ## Features
 
 1. **Product Catalog:**
@@ -71,7 +75,4 @@ This project aims to create a modern and user-friendly kiosk website inspired by
 - Feel free to customize and extend the functionality based on your specific requirements.
 - For any issues or feedback, please contact the project maintainers.
 
-## Live Demo
 
-Explore the live demo of the McDonald's style kiosk website [here](https://mcdonalds-kiosk-system.onrender.com/).
-```

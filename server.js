@@ -127,7 +127,7 @@ app.post('/create-checkout-session', async (req, res) => {
       ],
       mode: 'payment',
       success_url: `http://localhost:${PORT}/success`,
-      cancel_url: `http://localhost:${PORT}`,
+      cancel_url: `https://mcdonalds-kiosk-system.onrender.com/confirm`,
     });
   
     res.redirect(303, session.url); 

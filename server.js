@@ -110,6 +110,7 @@ app.get('/confirm',(req,res)=>{
     res.render('pages/confirm',{list,total,mode});
 });
 app.get('/cash',(req,res)=>{    
+  order+=1;
     res.render('pages/cash',{order});
 });
 app.post('/create-checkout-session', async (req, res) => {
